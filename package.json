@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "js/app.js",
-  "dependencies": {},
+  "dependencies": {
+    "jasmine": "^2.5.1"
+  },
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "babel-polyfill": "^6.9.1",

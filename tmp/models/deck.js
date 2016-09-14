@@ -19,7 +19,7 @@ var Deck = function () {
     }
 
     this.pack = config.cards;
-    console.log(this.pack);
+    console.log("model", this.pack);
     return true;
   }
 
@@ -43,12 +43,16 @@ var Deck = function () {
       if (this.pack.length >= 1) {
         return this.pack[0];
       }
+      return undefined;
     }
   }, {
     key: 'getCardsCount',
     value: function getCardsCount() {
       return this.pack.length;
     }
+  }, {
+    key: 'insertAt',
+    value: function insertAt() {}
   }]);
 
   return Deck;

@@ -17060,14 +17060,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Deck = function () {
-  function Deck(odin) {
+  function Deck(config) {
     _classCallCheck(this, Deck);
 
-    if ((typeof odin === 'undefined' ? 'undefined' : _typeof(odin)) !== 'object' || typeof odin.cards === 'undefined' || !Array.isArray(odin.cards)) {
+    if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) !== 'object' || typeof config.cards === 'undefined' || !Array.isArray(config.cards)) {
       return false;
     }
 
-    this.pack = odin.cards;
+    this.pack = config.cards;
+    console.log("model", this.pack);
     return true;
   }
 
@@ -17091,11 +17092,17 @@ var Deck = function () {
       if (this.pack.length >= 1) {
         return this.pack[0];
       }
+      return undefined;
     }
   }, {
     key: 'getCardsCount',
     value: function getCardsCount() {
       return this.pack.length;
+    }
+  }, {
+    key: 'insertAt',
+    value: function insertAt() {
+      this;
     }
   }]);
 

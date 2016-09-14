@@ -6,7 +6,7 @@ export default class Deck {
     }
 
     this.pack = config.cards;
-    console.log(this.pack);
+    console.log("model", this.pack);
     return true;
 
 
@@ -28,9 +28,14 @@ export default class Deck {
     if (this.pack.length >= 1) {
       return this.pack[0];
     }
+    return undefined;
   }
 
   getCardsCount() {
     return this.pack.length;
+  }
+
+  insertAt() {
+  
   }
 }
