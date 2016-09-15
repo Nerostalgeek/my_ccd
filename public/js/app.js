@@ -17101,9 +17101,7 @@ var Deck = function () {
     }
   }, {
     key: 'insertAt',
-    value: function insertAt() {
-      this;
-    }
+    value: function insertAt() {}
   }]);
 
   return Deck;

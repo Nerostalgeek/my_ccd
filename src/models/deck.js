@@ -1,7 +1,8 @@
 export default class Deck {
   constructor(config) {
     if (typeof config !== 'object' ||
-        typeof config.cards === 'undefined' || !Array.isArray(config.cards)) {
+        typeof config.cards === 'undefined' ||
+        !Array.isArray(config.cards)) {
       return false;
     }
 
@@ -35,7 +36,7 @@ export default class Deck {
     return this.pack.length;
   }
 
-  insertAt() {
-  
+  insertAt(card, position) {
+    return this.pack.splice(position, 0, card)
   }
 }

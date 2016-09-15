@@ -38,4 +38,12 @@ describe("draw", function() {
   })
 });
 
+describe("insertAt", function() {
+  it("should insert a card in the deck at a given position", function() {
+    instance.insertAt({ 'face': 'card-3' }, 2);
+    console.log("afterInsert", instance.pack);
+    expect(instance.pack[2]).toBeDefined();
+  })
+});
+
 

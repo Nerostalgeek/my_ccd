@@ -52,7 +52,7 @@ var Deck = function () {
     }
   }, {
     key: 'insertAt',
-    value: function insertAt() {}
+    value: function insertAt(card, position) {}
   }]);
 
   return Deck;
