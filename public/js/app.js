@@ -17015,7 +17015,7 @@ exports.default = new main();
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _game = require('./game');
@@ -17030,23 +17030,31 @@ var _player = require('./player');
 
 var _player2 = _interopRequireDefault(_player);
 
+var _hand = require('./hand');
+
+var _hand2 = _interopRequireDefault(_hand);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-    "game": {
-        "class": _game2.default,
-        "param": '{}'
-    },
-    "deck": {
-        "class": _deck2.default,
-        "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}]}'
-    },
-    "player": {
-        "class": _player2.default,
-        "param": '{}'
-    }
+  "game": {
+    "class": _game2.default,
+    "param": '{}'
+  },
+  "deck": {
+    "class": _deck2.default,
+    "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}]}'
+  },
+  "player": {
+    "class": _player2.default,
+    "param": '{}'
+  },
+  "hand": {
+    "class": _hand2.default,
+    "param": '{}'
+  }
 };
-},{"./deck":310,"./game":312,"./player":313}],310:[function(require,module,exports){
+},{"./deck":310,"./game":312,"./hand":313,"./player":314}],310:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17101,7 +17109,9 @@ var Deck = function () {
     }
   }, {
     key: 'insertAt',
-    value: function insertAt() {}
+    value: function insertAt(card, position) {
+      return this.pack.splice(position, 0, card);
+    }
   }]);
 
   return Deck;
@@ -17170,6 +17180,50 @@ var Game = function Game(config) {
 
 exports.default = Game;
 },{}],313:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Hand = function () {
+  function Hand(config) {
+    _classCallCheck(this, Hand);
+
+    if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) !== 'object' || typeof config.cards === 'undefined' || !Array.isArray(config.cards)) {
+      return false;
+    }
+
+    this.pack = config.cards;
+    console.log("model", this.pack);
+    return true;
+  }
+
+  _createClass(Hand, [{
+    key: 'addCard',
+    value: function addCard() {}
+  }, {
+    key: 'removeCard',
+    value: function removeCard(position) {}
+  }, {
+    key: 'getAllCards',
+    value: function getAllCards() {}
+  }, {
+    key: 'getCardsCount',
+    value: function getCardsCount() {}
+  }]);
+
+  return Hand;
+}();
+
+exports.default = Hand;
+},{}],314:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

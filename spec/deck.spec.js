@@ -46,4 +46,8 @@ describe("insertAt", function() {
   })
 });
 
-
+describe("getCardsCount", function() {
+  it("should give the current number of cards in the deck", function() {
+    expect(instance.pack.length).toBeDefined();
+  })
+});

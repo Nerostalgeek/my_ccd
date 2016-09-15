@@ -10,9 +10,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Deck = function () {
-  function Deck(config) {
-    _classCallCheck(this, Deck);
+var Hand = function () {
+  function Hand(config) {
+    _classCallCheck(this, Hand);
 
     if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) !== 'object' || typeof config.cards === 'undefined' || !Array.isArray(config.cards)) {
       return false;
@@ -23,41 +23,25 @@ var Deck = function () {
     return true;
   }
 
-  _createClass(Deck, [{
-    key: 'shuffle',
-    value: function shuffle() {
-      var i = 0,
-          j = 0,
-          temp = null;
-      for (i = this.pack.length - 1; i > 0; i -= 1) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = this.pack[i];
-        this.pack[i] = this.pack[j];
-        this.pack[j] = temp;
-      }
-      return this.pack;
-    }
+  _createClass(Hand, [{
+    key: 'addCard',
+    value: function addCard() {}
   }, {
-    key: 'draw',
-    value: function draw() {
-      if (this.pack.length >= 1) {
-        return this.pack[0];
-      }
-      return undefined;
+    key: 'removeCard',
+    value: function removeCard(position) {}
+  }, {
+    key: 'getAllCards',
+    value: function getAllCards() {
+      return this.pack;
     }
   }, {
     key: 'getCardsCount',
     value: function getCardsCount() {
       return this.pack.length;
     }
-  }, {
-    key: 'insertAt',
-    value: function insertAt(card, position) {
-      return this.pack.splice(position, 0, card);
-    }
   }]);
 
-  return Deck;
+  return Hand;
 }();
 
-exports.default = Deck;
+exports.default = Hand;
