@@ -18,26 +18,42 @@ var Hand = function () {
       return false;
     }
 
-    this.pack = config.cards;
-    console.log("model", this.pack);
+    this.hand = config.cards;
+    this.limit = config.limit;
+    console.log("modelHand", this.hand);
+    console.log("modelHandLimit", this.limit);
     return true;
   }
 
   _createClass(Hand, [{
     key: 'addCard',
-    value: function addCard() {}
+    value: function addCard(card) {
+      console.log("length", this.hand.length);
+      if (this.hand.length >= this.limit) {
+        return false;
+      }
+      this.hand.splice(this.hand.length, 0, card);
+      return true;
+    }
   }, {
     key: 'removeCard',
-    value: function removeCard(position) {}
+    value: function removeCard(position) {
+
+      this.hand.splice(position, 1);
+      if (this.hand.length -= 1) {
+        return true;
+      }
+      return false;
+    }
   }, {
     key: 'getAllCards',
     value: function getAllCards() {
-      return this.pack;
+      return this.hand;
     }
   }, {
     key: 'getCardsCount',
     value: function getCardsCount() {
-      return this.pack.length;
+      return this.hand.length;
     }
   }]);
 

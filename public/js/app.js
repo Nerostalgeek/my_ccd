@@ -17051,7 +17051,8 @@ exports.default = {
   },
   "hand": {
     "class": _hand2.default,
-    "param": '{}'
+    "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}],  "limit": 7 }'
+
   }
 };
 },{"./deck":310,"./game":312,"./hand":313,"./player":314}],310:[function(require,module,exports){
@@ -17200,23 +17201,43 @@ var Hand = function () {
       return false;
     }
 
-    this.pack = config.cards;
-    console.log("model", this.pack);
+    this.hand = config.cards;
+    this.limit = config.limit;
+    console.log("modelHand", this.hand);
+    console.log("modelHandLimit", this.limit);
     return true;
   }
 
   _createClass(Hand, [{
     key: 'addCard',
-    value: function addCard() {}
+    value: function addCard(card) {
+      console.log("length", this.hand.length);
+      if (this.hand.length >= this.limit) {
+        return false;
+      }
+      this.hand.splice(this.hand.length, 0, card);
+      return true;
+    }
   }, {
     key: 'removeCard',
-    value: function removeCard(position) {}
+    value: function removeCard(position) {
+
+      this.hand.splice(position, 1);
+      if (this.hand.length -= 1) {
+        return true;
+      }
+      return false;
+    }
   }, {
     key: 'getAllCards',
-    value: function getAllCards() {}
+    value: function getAllCards() {
+      return this.hand;
+    }
   }, {
     key: 'getCardsCount',
-    value: function getCardsCount() {}
+    value: function getCardsCount() {
+      return this.hand.length;
+    }
   }]);
 
   return Hand;

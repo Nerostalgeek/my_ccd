@@ -18,8 +18,8 @@ export default {
   },
   "hand": {
     "class": HandModel,
-    "param": '{}',
-    "limit": 7
+    "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}],  "limit": 7 }',
+
 
   }
 }

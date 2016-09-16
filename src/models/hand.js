@@ -5,24 +5,36 @@ export default class Hand {
       return false;
     }
 
-    this.pack = config.cards;
-    console.log("model", this.pack);
+    this.hand = config.cards;
+    this.limit = config.limit;
+    console.log("modelHand", this.hand);
+    console.log("modelHandLimit", this.limit);
     return true;
   }
 
-  addCard() {
-
+  addCard(card) {
+    console.log("length", (this.hand.length));
+    if (this.hand.length >= this.limit) {
+      return false;
+    }
+    this.hand.splice((this.hand.length), 0, card);
+    return true;
   }
 
   removeCard(position) {
 
+    this.hand.splice(position, 1);
+    if (this.hand.length -= 1) {
+      return true;
+    }
+    return false;
   }
 
   getAllCards() {
-  return this.pack;
+    return this.hand;
   }
 
   getCardsCount() {
-    return this.pack.length;
+    return this.hand.length;
   }
 }
