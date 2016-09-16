@@ -37,13 +37,12 @@ var Hand = function () {
     }
   }, {
     key: 'removeCard',
-    value: function removeCard(position) {
+    value: function removeCard() {
+      var position = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
 
-      this.hand.splice(position, 1);
-      if (this.hand.length -= 1) {
-        return true;
-      }
-      return false;
+
+      var retour = this.hand.splice(position, 1);
+      return retour.length > 0;
     }
   }, {
     key: 'getAllCards',

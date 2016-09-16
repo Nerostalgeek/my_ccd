@@ -6,6 +6,7 @@ let undefinedHand = undefined;
 let notAnArray = '{}';
 
 
+
 describe("constructor", function() {
   it("should return an object of array with cards", function() {
     expect(instance.constructor(defaultHand)).toBe(true);
@@ -28,7 +29,14 @@ describe("addCard", function() {
 
 describe("removeCard", function() {
   it("should remove a card from the hand at a given position and return true if it's working", function() {
+
     expect(instance.removeCard()).toBe(true);
+    expect(instance.removeCard()).toBe(true);
+    expect(instance.removeCard()).toBe(true);
+    expect(instance.removeCard()).toBe(true);
+    expect(instance.removeCard()).toBe(false);
+    expect(instance.removeCard()).toBe(false);
+
   })
 });
 

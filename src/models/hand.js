@@ -21,13 +21,10 @@ export default class Hand {
     return true;
   }
 
-  removeCard(position) {
+  removeCard(position = 0) {
 
-    this.hand.splice(position, 1);
-    if (this.hand.length -= 1) {
-      return true;
-    }
-    return false;
+    let retour = this.hand.splice(position, 1);
+    return retour.length > 0;
   }
 
   getAllCards() {
