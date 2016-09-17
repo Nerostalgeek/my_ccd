@@ -1,5 +1,5 @@
-let deckModel = require('../src/models/deck.js');
-let instance = new deckModel.default;
+let deckModel = require('../src/models/deck.js').default;
+let instance = new deckModel();
 
 let defaultPack = { "cards": [{ "face": "card-1" }, { "face": "card-2" }] };
 let undefinedPack = undefined;

@@ -17111,7 +17111,7 @@ var Deck = function () {
   }, {
     key: 'insertAt',
     value: function insertAt(card, position) {
-      w;
+      return this.pack.splice(position, 0, card);
     }
   }]);
 

@@ -1,11 +1,9 @@
-let handModel = require('../src/models/hand.js');
-let instance = new handModel.default;
+let handModel = require('../src/models/hand.js').default;
+let instance = new handModel();
 
 let defaultHand = { "cards": [{ "face": "card-1" }, { "face": "card-2" }], "limit": 4 };
 let undefinedHand = undefined;
 let notAnArray = '{}';
-
-
 
 describe("constructor", function() {
   it("should return an object of array with cards", function() {
