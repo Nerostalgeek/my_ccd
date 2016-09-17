@@ -14,12 +14,10 @@ export default {
   },
   "player": {
     "class": PlayerModel,
-    "param": '{}'
+    "param": '{"deck": [], "life": 100, "def": 100, "strength": 10}'
   },
   "hand": {
     "class": HandModel,
     "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}],  "limit": 7 }',
-
-
-  }
+  },
 }

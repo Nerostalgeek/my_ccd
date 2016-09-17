@@ -22,12 +22,7 @@ var Abstract = function (_EventManager) {
   function Abstract() {
     _classCallCheck(this, Abstract);
 
-    var _this = _possibleConstructorReturn(this, (Abstract.__proto__ || Object.getPrototypeOf(Abstract)).call(this));
-
-    if (new.target === Abstract) {
-      throw new TypeError("Cannot construct Abstract instances directly");
-    }
-    return _this;
+    return _possibleConstructorReturn(this, (Abstract.__proto__ || Object.getPrototypeOf(Abstract)).call(this));
   }
 
   return Abstract;

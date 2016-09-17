@@ -15,16 +15,11 @@ describe("constructor", function() {
 
 describe("shuffle", function() {
   it("should shuffles the deck", function() {
-    console.log("pack", instance.pack);
+    const oldDeck = JSON.stringify(instance.pack);
     instance.shuffle();
-    if (instance.pack == instance.shuffle()) {
-      for (let x = 0; x <= 10; x++) {
-        instance.shuffle();
-        console.log("shuffledpack", instance.shuffle());
-        console.log("packAfter", instance.pack);
-      }
-    }
-    expect(instance.pack).toEqual(instance.shuffle());
+    const newDeck = JSON.stringify(instance.pack);
+
+    expect(oldDeck).not.toEqual(newDeck);
   })
 });
 

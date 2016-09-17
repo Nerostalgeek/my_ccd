@@ -17,7 +17,7 @@ gulp.task('less', function() {
 gulp.task('babel', function() {
   gulp.src('src/**/*.js')
       .pipe(babel({
-        "presets": ["es2015"]
+        "presets": ["es2015", "stage-0"]
       }))
       .on('error', function(error) {
         console.log(error);

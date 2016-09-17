@@ -33,11 +33,10 @@ exports.default = {
   },
   "player": {
     "class": _player2.default,
-    "param": '{}'
+    "param": '{"deck": [], "life": 100, "def": 100, "strength": 10}'
   },
   "hand": {
     "class": _hand2.default,
     "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}],  "limit": 7 }'
-
   }
 };

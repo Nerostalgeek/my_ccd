@@ -17,7 +17,7 @@ export default class Hand {
     if (this.hand.length >= this.limit) {
       return false;
     }
-    this.hand.splice((this.hand.length), 0, card);
+    this.hand.splice(this.hand.length, 0, card);
     return true;
   }
 

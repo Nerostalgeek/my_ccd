@@ -26,16 +26,15 @@ var Deck = function () {
   _createClass(Deck, [{
     key: 'shuffle',
     value: function shuffle() {
-      var i = 0,
-          j = 0,
-          temp = null;
-      for (i = this.pack.length - 1; i > 0; i -= 1) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = this.pack[i];
-        this.pack[i] = this.pack[j];
-        this.pack[j] = temp;
+      var temp = [];
+      var len = this.pack.length;
+
+      while (len) {
+        temp.push(this.pack.splice(Math.floor(Math.random() * this.pack.length), 1)[0]);
+        len--;
       }
-      return this.pack;
+
+      this.pack = temp;
     }
   }, {
     key: 'draw',
@@ -43,6 +42,7 @@ var Deck = function () {
       if (this.pack.length >= 1) {
         return this.pack[0];
       }
+
       return undefined;
     }
   }, {
