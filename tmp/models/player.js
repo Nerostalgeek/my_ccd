@@ -45,6 +45,8 @@ var Player = function (_Pawn) {
     } else {
       _this.deck = deck;
     }
+    console.log('THIS', _this);
+
     return _this;
   }
 
@@ -92,7 +94,14 @@ var Player = function (_Pawn) {
     }
   }, {
     key: 'attack',
-    value: function attack() {}
+    value: function attack(position, target) {
+      var _this2 = this;
+
+      var card = this.board.hand.find(function (x) {
+        return _this2.board.hand.indexOf(x) === position;
+      });
+      return card.attack(target);
+    }
   }]);
 
   return Player;

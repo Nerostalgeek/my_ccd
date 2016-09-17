@@ -42,7 +42,9 @@ var ArenaController = function (_Controller) {
         _this.game = _factory2.default.get('game', { 'up': _factory2.default.get('player', { type: 'computer' }),
             'down': _factory2.default.get('player', { type: 'human' }) });
 
-        _this.on('clickDeck', _this.onClickDeck.bind(_this));
+        _this.on('clickDeck', function () {
+            return _this.onClickDeck();
+        });
         _this.on('clickHand', _this.onClickHand.bind(_this));
         _this.on('clickBoard', _this.onClickBoard.bind(_this));
         _this.on('targetHand', _this.onTargetHand.bind(_this));

@@ -50,10 +50,8 @@ var Pawn = function (_Abstract) {
   }, {
     key: "attack",
     value: function attack(target) {
-      var hasStrikeBack = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
-
       if (target instanceof Pawn) {
-        return this.receiveAttack(target, hasStrikeBack);
+        return target.receiveAttack(this);
       }
 
       return false;
@@ -64,10 +62,10 @@ var Pawn = function (_Abstract) {
       var strikeBack = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
 
       if (strikeBack === true) {
-        this.life -= opponent.getDef();
+        opponent.life -= this.getDef();
       }
 
-      opponent.life -= this.getStrength();
+      this.life -= opponent.getStrength();
 
       return true;
     }

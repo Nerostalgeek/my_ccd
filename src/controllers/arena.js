@@ -18,7 +18,7 @@ export default class ArenaController extends Controller {
         this.game = ModelFactory.get('game', {'up'  : ModelFactory.get('player', {type: 'computer'}),
                                               'down': ModelFactory.get('player', {type: 'human'}) });
 
-        this.on('clickDeck', this.onClickDeck.bind(this));
+        this.on('clickDeck', () => this.onClickDeck());
         this.on('clickHand', this.onClickHand.bind(this));
         this.on('clickBoard', this.onClickBoard.bind(this));
         this.on('targetHand', this.onTargetHand.bind(this));

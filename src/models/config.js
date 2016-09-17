@@ -2,11 +2,14 @@ import GameModel from './game';
 import DeckModel from './deck';
 import PlayerModel from './player';
 import HandModel from './hand';
+import BoardModel from './board';
+import CemetaryModel from './cemetary';
+
 
 export default {
   "game": {
     "class": GameModel,
-    "param": '{}'
+    "param": '{"up":{},"down":{}}'
   },
   "deck": {
     "class": DeckModel,
@@ -18,6 +21,16 @@ export default {
   },
   "hand": {
     "class": HandModel,
-    "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}],  "limit": 7 }',
+    "param": '{"cards" : [],  "limit": 7 }',
   },
+  "board": {
+    "class": BoardModel,
+    "param": '{"cards" : [],  "limit": 999999999 }',
+  },
+  "cemetary": {
+    "class": CemetaryModel,
+    "param": '{"cards" : [] }',
+  }
+
+
 }

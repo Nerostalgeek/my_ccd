@@ -7,7 +7,6 @@ export default class Pawn extends Abstract {
     this.def = def;
   }
 
-
   getLife() {
     return this.life;
   }
@@ -20,9 +19,9 @@ export default class Pawn extends Abstract {
     return this.def;
   }
 
-  attack(target, hasStrikeBack = false) {
+  attack(target) {
     if (target instanceof Pawn) {
-      return this.receiveAttack(target, hasStrikeBack);
+      return target.receiveAttack(this);
     }
 
     return false;
@@ -30,10 +29,10 @@ export default class Pawn extends Abstract {
 
   receiveAttack(opponent, strikeBack = false) {
     if (strikeBack === true) {
-      this.life -= opponent.getDef();
+      opponent.life -= this.getDef();
     }
 
-    opponent.life -= this.getStrength();
+    this.life -= opponent.getStrength();
 
     return true;
   }

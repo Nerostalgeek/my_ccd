@@ -13,10 +13,12 @@ export default class Player extends Pawn {
     } else {
       this.deck = deck;
     }
+    console.log('THIS', this);
+
   }
 
   shuffle(deck = 'deck') {
-    if (deck !== 'cemetary' || deck !== 'deck'){
+    if (deck !== 'cemetary' || deck !== 'deck') {
       return false;
     }
 
@@ -34,7 +36,7 @@ export default class Player extends Pawn {
   playCard(position) {
     const movedCard = this.board.hand.find(x => board.indexOf(x) === position);
 
-    this.board.hand = [ ...this.board.hand, movedCard];
+    this.board.hand = [...this.board.hand, movedCard];
 
     this.hand.hand = [
       ...this.hand.hand.slice(0, position),
@@ -42,10 +44,10 @@ export default class Player extends Pawn {
     ];
   }
 
-  discard(position){
+  discard(position) {
     const movedCard = this.cemetary.hand.find(x => cemetary.indexOf(x) === position);
 
-    this.cemetary.hand = [ ...this.cemetary.hand, movedCard];
+    this.cemetary.hand = [...this.cemetary.hand, movedCard];
 
     this.hand.hand = [
       ...this.hand.hand.slice(0, position),
@@ -53,7 +55,9 @@ export default class Player extends Pawn {
     ];
   }
 
-  attack(){
+  attack(position, target) {
+    const card = this.board.hand.find(x => this.board.hand.indexOf(x) === position);
+    return card.attack(target);
 
   }
 }

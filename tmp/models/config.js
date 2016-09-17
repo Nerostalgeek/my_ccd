@@ -20,12 +20,20 @@ var _hand = require('./hand');
 
 var _hand2 = _interopRequireDefault(_hand);
 
+var _board = require('./board');
+
+var _board2 = _interopRequireDefault(_board);
+
+var _cemetary = require('./cemetary');
+
+var _cemetary2 = _interopRequireDefault(_cemetary);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   "game": {
     "class": _game2.default,
-    "param": '{}'
+    "param": '{"up":{},"down":{}}'
   },
   "deck": {
     "class": _deck2.default,
@@ -37,6 +45,15 @@ exports.default = {
   },
   "hand": {
     "class": _hand2.default,
-    "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}],  "limit": 7 }'
+    "param": '{"cards" : [],  "limit": 7 }'
+  },
+  "board": {
+    "class": _board2.default,
+    "param": '{"cards" : [],  "limit": 999999999 }'
+  },
+  "cemetary": {
+    "class": _cemetary2.default,
+    "param": '{"cards" : [] }'
   }
+
 };

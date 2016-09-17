@@ -1,7 +1,7 @@
 let deckModel = require('../src/models/deck.js').default;
 let instance = new deckModel();
 
-let defaultPack = { "cards": [{ "face": "card-1" }, { "face": "card-2" }] };
+let defaultPack = { "cards": [{ "face": "card-1" }, { "face": "card-2" }, { "face": "card-3" }, { "face": "card-4" }] };
 let undefinedPack = undefined;
 let notAnArray = '{}';
 

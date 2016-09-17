@@ -16280,7 +16280,7 @@ var ArenaController = function (_Controller) {
 }(_dom2.default);
 
 exports.default = ArenaController;
-},{"../models/factory":312,"./dom":304,"./side":306}],300:[function(require,module,exports){
+},{"../models/factory":314,"./dom":304,"./side":306}],300:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16650,7 +16650,7 @@ var DeckController = function (_Controller) {
 }(_dom2.default);
 
 exports.default = DeckController;
-},{"../models/factory":312,"./card":301,"./dom":304}],304:[function(require,module,exports){
+},{"../models/factory":314,"./card":301,"./dom":304}],304:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17044,6 +17044,70 @@ var Abstract = function (_EventManager) {
 
 exports.default = Abstract;
 },{"../eventManager":307}],310:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _hand = require("./hand");
+
+var _hand2 = _interopRequireDefault(_hand);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Board = function (_Hand) {
+  _inherits(Board, _Hand);
+
+  function Board() {
+    _classCallCheck(this, Board);
+
+    return _possibleConstructorReturn(this, (Board.__proto__ || Object.getPrototypeOf(Board)).apply(this, arguments));
+  }
+
+  return Board;
+}(_hand2.default);
+
+exports.default = Board;
+},{"./hand":316}],311:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _deck = require("./deck");
+
+var _deck2 = _interopRequireDefault(_deck);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Cemetery = function (_Deck) {
+  _inherits(Cemetery, _Deck);
+
+  function Cemetery() {
+    _classCallCheck(this, Cemetery);
+
+    return _possibleConstructorReturn(this, (Cemetery.__proto__ || Object.getPrototypeOf(Cemetery)).apply(this, arguments));
+  }
+
+  return Cemetery;
+}(_deck2.default);
+
+exports.default = Cemetery;
+},{"./deck":313}],312:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17066,12 +17130,20 @@ var _hand = require('./hand');
 
 var _hand2 = _interopRequireDefault(_hand);
 
+var _board = require('./board');
+
+var _board2 = _interopRequireDefault(_board);
+
+var _cemetary = require('./cemetary');
+
+var _cemetary2 = _interopRequireDefault(_cemetary);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   "game": {
     "class": _game2.default,
-    "param": '{}'
+    "param": '{"up":{},"down":{}}'
   },
   "deck": {
     "class": _deck2.default,
@@ -17083,10 +17155,19 @@ exports.default = {
   },
   "hand": {
     "class": _hand2.default,
-    "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}],  "limit": 7 }'
+    "param": '{"cards" : [],  "limit": 7 }'
+  },
+  "board": {
+    "class": _board2.default,
+    "param": '{"cards" : [],  "limit": 999999999 }'
+  },
+  "cemetary": {
+    "class": _cemetary2.default,
+    "param": '{"cards" : [] }'
   }
+
 };
-},{"./deck":311,"./game":313,"./hand":314,"./player":316}],311:[function(require,module,exports){
+},{"./board":310,"./cemetary":311,"./deck":313,"./game":315,"./hand":316,"./player":318}],313:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17150,7 +17231,7 @@ var Deck = function () {
 }();
 
 exports.default = Deck;
-},{}],312:[function(require,module,exports){
+},{}],314:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17194,24 +17275,72 @@ exports.default = {
     }
 
 };
-},{"./config":310}],313:[function(require,module,exports){
-"use strict";
+},{"./config":312}],315:[function(require,module,exports){
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _eventManager2 = require('../eventManager');
+
+var _eventManager3 = _interopRequireDefault(_eventManager2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Game = function Game(config) {
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Game = function (_eventManager) {
+  _inherits(Game, _eventManager);
+
+  function Game(config) {
     _classCallCheck(this, Game);
 
-    this.up = config.up;
-    this.down = config.down;
-};
+    var _this = _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this));
+
+    _this.up = config.up;
+    _this.down = config.down;
+    _this.turn = 1;
+    console.log(_this.turn);
+    return _this;
+  }
+
+  _createClass(Game, [{
+    key: 'proxy',
+    value: function proxy(side, action, payload) {
+      if (side !== 'down' || side !== 'up') {
+        return false;
+      }
+
+      return this[side].call(action, payload);
+    }
+  }, {
+    key: 'getTurn',
+    value: function getTurn() {
+      if (this.turn % 2 === 0) {
+        return 'up';
+      }
+
+      return 'down';
+    }
+  }, {
+    key: 'changeTurn',
+    value: function changeTurn() {
+      this.turn++;
+    }
+  }]);
+
+  return Game;
+}(_eventManager3.default);
 
 exports.default = Game;
-},{}],314:[function(require,module,exports){
+},{"../eventManager":307}],316:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17274,7 +17403,7 @@ var Hand = function () {
 }();
 
 exports.default = Hand;
-},{}],315:[function(require,module,exports){
+},{}],317:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17327,10 +17456,8 @@ var Pawn = function (_Abstract) {
   }, {
     key: "attack",
     value: function attack(target) {
-      var hasStrikeBack = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
-
       if (target instanceof Pawn) {
-        return this.receiveAttack(target, hasStrikeBack);
+        return target.receiveAttack(this);
       }
 
       return false;
@@ -17341,10 +17468,10 @@ var Pawn = function (_Abstract) {
       var strikeBack = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
 
       if (strikeBack === true) {
-        this.life -= opponent.getDef();
+        opponent.life -= this.getDef();
       }
 
-      opponent.life -= this.getStrength();
+      this.life -= opponent.getStrength();
 
       return true;
     }
@@ -17354,7 +17481,7 @@ var Pawn = function (_Abstract) {
 }(_abstract2.default);
 
 exports.default = Pawn;
-},{"./abstract":309}],316:[function(require,module,exports){
+},{"./abstract":309}],318:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17402,6 +17529,8 @@ var Player = function (_Pawn) {
     } else {
       _this.deck = deck;
     }
+    console.log('THIS', _this);
+
     return _this;
   }
 
@@ -17438,15 +17567,30 @@ var Player = function (_Pawn) {
     }
   }, {
     key: 'discard',
-    value: function discard() {}
+    value: function discard(position) {
+      var movedCard = this.cemetary.hand.find(function (x) {
+        return cemetary.indexOf(x) === position;
+      });
+
+      this.cemetary.hand = [].concat(_toConsumableArray(this.cemetary.hand), [movedCard]);
+
+      this.hand.hand = [].concat(_toConsumableArray(this.hand.hand.slice(0, position)), _toConsumableArray(this.slice(position + 1)));
+    }
   }, {
     key: 'attack',
-    value: function attack() {}
+    value: function attack(position, target) {
+      var _this2 = this;
+
+      var card = this.board.hand.find(function (x) {
+        return _this2.board.hand.indexOf(x) === position;
+      });
+      return card.attack(target);
+    }
   }]);
 
   return Player;
 }(_pawn2.default);
 
 exports.default = Player;
-},{"./factory":312,"./pawn":315}]},{},[308])
+},{"./factory":314,"./pawn":317}]},{},[308])
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJhcHAuanMiXSwic291cmNlc0NvbnRlbnQiOlsiJ3VzZSBzdHJpY3QnO1xuXG5PYmplY3QuZGVmaW5lUHJvcGVydHkoZXhwb3J0cywgXCJfX2VzTW9kdWxlXCIsIHtcbiAgICB2YWx1ZTogdHJ1ZVxufSk7XG5cbnJlcXVpcmUoJ2JhYmVsLXBvbHlmaWxsJyk7XG5cbnZhciBfYXJlbmEgPSByZXF1aXJlKCcuL2NvbnRyb2xsZXJzL2FyZW5hJyk7XG5cbnZhciBfYXJlbmEyID0gX2ludGVyb3BSZXF1aXJlRGVmYXVsdChfYXJlbmEpO1xuXG5mdW5jdGlvbiBfaW50ZXJvcFJlcXVpcmVEZWZhdWx0KG9iaikgeyByZXR1cm4gb2JqICYmIG9iai5fX2VzTW9kdWxlID8gb2JqIDogeyBkZWZhdWx0OiBvYmogfTsgfVxuXG5mdW5jdGlvbiBfY2xhc3NDYWxsQ2hlY2soaW5zdGFuY2UsIENvbnN0cnVjdG9yKSB7IGlmICghKGluc3RhbmNlIGluc3RhbmNlb2YgQ29uc3RydWN0b3IpKSB7IHRocm93IG5ldyBUeXBlRXJyb3IoXCJDYW5ub3QgY2FsbCBhIGNsYXNzIGFzIGEgZnVuY3Rpb25cIik7IH0gfVxuXG52YXIgbWFpbiA9IGZ1bmN0aW9uIG1haW4oKSB7XG4gICAgX2NsYXNzQ2FsbENoZWNrKHRoaXMsIG1haW4pO1xuXG4gICAgbmV3IF9hcmVuYTIuZGVmYXVsdCgpO1xufTtcblxuZXhwb3J0cy5kZWZhdWx0ID0gbmV3IG1haW4oKTsiXSwiZmlsZSI6ImFwcC5qcyIsInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
